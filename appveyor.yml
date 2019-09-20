@@ -1,0 +1,30 @@
+version: 1.0.{build}
+pull_requests:
+  do_not_increment_build_number: true
+skip_branch_with_pr: true
+image: Ubuntu1804
+configuration: Release
+platform: Any CPU
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+build:
+  project: gameboy.sln
+  publish_core_console: true
+  verbosity: normal
+test:
+  assemblies:
+    only:
+    - '*.Tests.dll'
+deploy: off
